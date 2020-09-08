@@ -22,11 +22,11 @@ import org.osgi.framework.BundleContext;
 public class Activator implements BundleActivator {
 
     public void start(BundleContext context) {
-        System.out.println("Starting the bundle: m2model");
+        System.out.println("Starting the bundle - m2model");
     }
 
     public void stop(BundleContext context) {
-        System.out.println("Stopping the bundle: m2model");
+        System.out.println("Stopping the bundle - m2model");
     }
 
 }

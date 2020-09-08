@@ -24,7 +24,8 @@
 
     <groupId>br.ufba.dcc.wiser</groupId>
     <artifactId>m2model</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0</version>
+    
     <packaging>bundle</packaging>
 
     <name>m2model Bundle</name>
@@ -44,6 +45,15 @@
             <version>${osgi.version}</version>
             <scope>provided</scope>
         </dependency>
+        
+        <!-- Dependecies DB -->
+        <dependency>
+			<groupId>org.hibernate.javax.persistence</groupId>
+			<artifactId>hibernate-jpa-2.1-api</artifactId>
+			<version>1.0.0.Final</version>
+		</dependency>
+		<!-- Dependecies DB -->
+        
     </dependencies>
 
     <build>
