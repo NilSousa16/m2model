@@ -16,12 +16,13 @@ public class Gateway {
 	public Gateway() {
 	}
 
-	public Gateway(String mac, String ip, String manufacturer, String hostName) {
+	public Gateway(String mac, String ip, String manufacturer, String hostName, boolean status) {
 		super();
 		this.mac = mac;
 		this.ip = ip;
 		this.manufacturer = manufacturer;
 		this.hostName = hostName;
+		this.status = status;
 	}
 
 	public String getMac() {
