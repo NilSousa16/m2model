@@ -21,6 +21,9 @@ public class Gateway implements Serializable {
 	private boolean status;
 	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar date;
+	
+//	@OneToMany(mappedBy = "gateway", fetch = FetchType.LAZY)
+//	private List<GatewayStatus> gatewayStatus;
 
 	public Gateway() {
 	}
@@ -82,6 +85,14 @@ public class Gateway implements Serializable {
 	public void setDate(Calendar date) {
 		this.date = date;
 	}
+
+//	public List<GatewayStatus> getGatewayStatus() {
+//		return gatewayStatus;
+//	}
+//
+//	public void setGatewayStatus(List<GatewayStatus> gatewayStatus) {
+//		this.gatewayStatus = gatewayStatus;
+//	}
 
 	@Override
 	public int hashCode() {
