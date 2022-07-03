@@ -22,6 +22,18 @@ public class DeviceStatus {
 	 * Currently operating: operational / testing / unused
 	 */
 	private String situation;
+	
+	public DeviceStatus() {
+
+	}
+
+	public DeviceStatus(String deviceId, String situation, Calendar date) {
+		device = new Device();
+		
+		device.setId(deviceId);
+		this.situation = situation;
+		this.date = date;
+	}
 
 	public Calendar getDate() {
 		return date;

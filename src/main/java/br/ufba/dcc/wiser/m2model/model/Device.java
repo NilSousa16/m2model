@@ -46,14 +46,15 @@ public class Device implements Serializable {
 	}
 
 	public Device(String location, String description, String typeSensor, Boolean status, Calendar date,
-			Gateway gateway) {
+			String macGateway) {
 		super();
 		this.location = location;
 		this.description = description;
 		this.typeSensor = typeSensor;
 		this.status = status;
 		this.date = date;
-		this.gateway = gateway;
+		gateway = new Gateway();
+		gateway.setMac(macGateway);
 	}
 	
 	public Device(String id) {
