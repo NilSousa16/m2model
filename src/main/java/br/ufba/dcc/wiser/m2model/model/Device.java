@@ -43,6 +43,7 @@ public class Device implements Serializable {
 	private Gateway gateway;
 
 	public Device() {
+		gateway = new Gateway();
 	}
 
 	public Device(String location, String description, String typeSensor, Boolean status, Calendar date,
