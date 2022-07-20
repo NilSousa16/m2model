@@ -1,15 +1,20 @@
 package br.ufba.dcc.wiser.m2model.model;
 
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Objects;
 
+import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-public class DeviceStatus {
+@Entity
+public class DeviceStatus implements Serializable{
 	
+	private static final long serialVersionUID = -4100869947067797492L;
+
 	@Id
 	@ManyToOne
 	private Device device;
