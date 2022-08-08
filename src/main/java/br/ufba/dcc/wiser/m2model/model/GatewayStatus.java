@@ -2,6 +2,7 @@ package br.ufba.dcc.wiser.m2model.model;
 
 import java.io.Serializable;
 import java.util.Calendar;
+import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -23,14 +24,14 @@ public class GatewayStatus implements Serializable {
 	private Gateway gateway;
 
 	private double baterryLevel;
-	private long usedMemory;
+	private double usedMemory;
 	private double usedProcessor;
 
 	public GatewayStatus() {
 
 	}
 
-	public GatewayStatus(String mac, double baterryLevel, long usedMemory, double usedProcessor, Calendar date) {
+	public GatewayStatus(String mac, double baterryLevel, double usedMemory, double usedProcessor, Calendar date) {
 		gateway = new Gateway();
 		gateway.setMac(mac);
 		this.baterryLevel = baterryLevel;
@@ -63,11 +64,11 @@ public class GatewayStatus implements Serializable {
 		this.baterryLevel = baterryLevel;
 	}
 
-	public long getUsedMemory() {
+	public double getUsedMemory() {
 		return usedMemory;
 	}
 
-	public void setUsedMemory(long usedMemory) {
+	public void setUsedMemory(double usedMemory) {
 		this.usedMemory = usedMemory;
 	}
 
@@ -81,17 +82,7 @@ public class GatewayStatus implements Serializable {
 
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		long temp;
-		temp = Double.doubleToLongBits(baterryLevel);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		result = prime * result + ((date == null) ? 0 : date.hashCode());
-		result = prime * result + ((gateway == null) ? 0 : gateway.hashCode());
-		result = prime * result + (int) (usedMemory ^ (usedMemory >>> 32));
-		temp = Double.doubleToLongBits(usedProcessor);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		return result;
+		return Objects.hash(baterryLevel, date, gateway, usedMemory, usedProcessor);
 	}
 
 	@Override
@@ -103,23 +94,10 @@ public class GatewayStatus implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		GatewayStatus other = (GatewayStatus) obj;
-		if (Double.doubleToLongBits(baterryLevel) != Double.doubleToLongBits(other.baterryLevel))
-			return false;
-		if (date == null) {
-			if (other.date != null)
-				return false;
-		} else if (!date.equals(other.date))
-			return false;
-		if (gateway == null) {
-			if (other.gateway != null)
-				return false;
-		} else if (!gateway.equals(other.gateway))
-			return false;
-		if (usedMemory != other.usedMemory)
-			return false;
-		if (Double.doubleToLongBits(usedProcessor) != Double.doubleToLongBits(other.usedProcessor))
-			return false;
-		return true;
+		return Double.doubleToLongBits(baterryLevel) == Double.doubleToLongBits(other.baterryLevel)
+				&& Objects.equals(date, other.date) && Objects.equals(gateway, other.gateway)
+				&& Double.doubleToLongBits(usedMemory) == Double.doubleToLongBits(other.usedMemory)
+				&& Double.doubleToLongBits(usedProcessor) == Double.doubleToLongBits(other.usedProcessor);
 	}
 
 }
