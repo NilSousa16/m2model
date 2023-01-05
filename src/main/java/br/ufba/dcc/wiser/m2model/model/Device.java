@@ -23,11 +23,15 @@ public class Device implements Serializable {
 	private String location;
 	private String description;
 	/**
-	 * Indicates whether the sensor is for temperature, humidity, etc.
+	 * Indicates whether the device is a sensor for humidity, temperature, etc., or if an actuator of any kind
 	 */
-	private String typeSensor;
+	private String typeDevice;
 	/**
-	 * Indicates whether the device is working 
+	 * Indicates whether the device is a sensor or actuator
+	 */
+	private String category;
+	/**
+	 * Indicates whether the device is working
 	 */
 	private Boolean status;
 	/**
@@ -46,18 +50,19 @@ public class Device implements Serializable {
 		gateway = new Gateway();
 	}
 
-	public Device(String location, String description, String typeSensor, Boolean status, Calendar date,
-			String macGateway) {
+	public Device(String location, String description, String typeDevice, String category, Boolean status,
+			Calendar date, String macGateway) {
 		super();
 		this.location = location;
 		this.description = description;
-		this.typeSensor = typeSensor;
+		this.typeDevice = typeDevice;
+		this.category = category;
 		this.status = status;
 		this.date = date;
 		gateway = new Gateway();
 		gateway.setMac(macGateway);
 	}
-	
+
 	public Device(String id) {
 		super();
 		this.id = id;
@@ -87,12 +92,20 @@ public class Device implements Serializable {
 		this.description = description;
 	}
 
-	public String getTypeSensor() {
-		return typeSensor;
+	public String getTypeDevice() {
+		return typeDevice;
 	}
 
-	public void setTypeSensor(String typeSensor) {
-		this.typeSensor = typeSensor;
+	public void setTypeDevice(String typeDevice) {
+		this.typeDevice = typeDevice;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
 	}
 
 	public Boolean getStatus() {
@@ -121,7 +134,7 @@ public class Device implements Serializable {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(date, description, gateway, id, location, status, typeSensor);
+		return Objects.hash(category, date, description, gateway, id, location, status, typeDevice);
 	}
 
 	@Override
@@ -133,10 +146,10 @@ public class Device implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Device other = (Device) obj;
-		return Objects.equals(date, other.date) && Objects.equals(description, other.description)
-				&& Objects.equals(gateway, other.gateway) && Objects.equals(id, other.id)
-				&& Objects.equals(location, other.location) && Objects.equals(status, other.status)
-				&& Objects.equals(typeSensor, other.typeSensor);
+		return Objects.equals(category, other.category) && Objects.equals(date, other.date)
+				&& Objects.equals(description, other.description) && Objects.equals(gateway, other.gateway)
+				&& Objects.equals(id, other.id) && Objects.equals(location, other.location)
+				&& Objects.equals(status, other.status) && Objects.equals(typeDevice, other.typeDevice);
 	}
 
 }
