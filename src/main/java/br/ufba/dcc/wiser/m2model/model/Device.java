@@ -23,7 +23,8 @@ public class Device implements Serializable {
 	private String location;
 	private String description;
 	/**
-	 * Indicates whether the device is a sensor for humidity, temperature, etc., or if an actuator of any kind
+	 * Indicates whether the device is a sensor for humidity, temperature, etc., or
+	 * if an actuator of any kind
 	 */
 	private String typeDevice;
 	/**
@@ -50,9 +51,10 @@ public class Device implements Serializable {
 		gateway = new Gateway();
 	}
 
-	public Device(String location, String description, String typeDevice, String category, Boolean status,
+	public Device(String id, String location, String description, String typeDevice, String category, Boolean status,
 			Calendar date, String macGateway) {
 		super();
+		this.id = id;
 		this.location = location;
 		this.description = description;
 		this.typeDevice = typeDevice;
@@ -61,11 +63,6 @@ public class Device implements Serializable {
 		this.date = date;
 		gateway = new Gateway();
 		gateway.setMac(macGateway);
-	}
-
-	public Device(String id) {
-		super();
-		this.id = id;
 	}
 
 	public String getId() {

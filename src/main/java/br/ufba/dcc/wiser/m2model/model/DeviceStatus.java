@@ -11,8 +11,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-public class DeviceStatus implements Serializable{
-	
+public class DeviceStatus implements Serializable {
+
 	private static final long serialVersionUID = -4100869947067797492L;
 
 	@Id
@@ -22,29 +22,21 @@ public class DeviceStatus implements Serializable{
 	@Id
 	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar date;
-	
+
 	/**
-	 * Currently operating: operational / testing / unused
+	 * Currently operating: operational / test / disabled
 	 */
 	private String situation;
-	
+
 	public DeviceStatus() {
 
 	}
 
 	public DeviceStatus(String deviceId, String situation, Calendar date) {
 		device = new Device();
-		
+
 		device.setId(deviceId);
 		this.situation = situation;
-		this.date = date;
-	}
-
-	public Calendar getDate() {
-		return date;
-	}
-
-	public void setDate(Calendar date) {
 		this.date = date;
 	}
 
@@ -54,6 +46,14 @@ public class DeviceStatus implements Serializable{
 
 	public void setDevice(Device device) {
 		this.device = device;
+	}
+
+	public Calendar getDate() {
+		return date;
+	}
+
+	public void setDate(Calendar date) {
+		this.date = date;
 	}
 
 	public String getSituation() {

@@ -2,10 +2,13 @@ package br.ufba.dcc.wiser.m2model.model;
 
 import java.io.Serializable;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -26,20 +29,13 @@ public class Gateway implements Serializable {
 	private String solution;
 
 	private String coordinates;
-
-//	@OneToMany(mappedBy = "gateway", fetch = FetchType.LAZY)
-//	private List<GatewayStatus> gatewayStatus;
+//
+	@OneToMany(mappedBy = "gateway", fetch = FetchType.LAZY)
+	private List<GatewayStatus> gatewayStatus;
 
 	public Gateway() {
 	}
 
-//	public List<GatewayStatus> getGatewayStatus() {
-//	return gatewayStatus;
-//}
-//
-//public void setGatewayStatus(List<GatewayStatus> gatewayStatus) {
-//	this.gatewayStatus = gatewayStatus;
-//}
 	public Gateway(String mac, String ip, String manufacturer, String hostName, boolean status, Calendar date,
 			String solution, String coordinates) {
 		super();
@@ -117,17 +113,17 @@ public class Gateway implements Serializable {
 		this.coordinates = coordinates;
 	}
 
-//	public List<GatewayStatus> getGatewayStatus() {
-//	return gatewayStatus;
-//}
-//
-//public void setGatewayStatus(List<GatewayStatus> gatewayStatus) {
-//	this.gatewayStatus = gatewayStatus;
-//}
+	public List<GatewayStatus> getGatewayStatus() {
+		return gatewayStatus;
+	}
+
+	public void setGatewayStatus(List<GatewayStatus> gatewayStatus) {
+		this.gatewayStatus = gatewayStatus;
+	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(coordinates, date, hostName, ip, mac, manufacturer, solution, status);
+		return Objects.hash(coordinates, date, gatewayStatus, hostName, ip, mac, manufacturer, solution, status);
 	}
 
 	@Override
@@ -140,9 +136,10 @@ public class Gateway implements Serializable {
 			return false;
 		Gateway other = (Gateway) obj;
 		return Objects.equals(coordinates, other.coordinates) && Objects.equals(date, other.date)
-				&& Objects.equals(hostName, other.hostName) && Objects.equals(ip, other.ip)
-				&& Objects.equals(mac, other.mac) && Objects.equals(manufacturer, other.manufacturer)
-				&& Objects.equals(solution, other.solution) && status == other.status;
+				&& Objects.equals(gatewayStatus, other.gatewayStatus) && Objects.equals(hostName, other.hostName)
+				&& Objects.equals(ip, other.ip) && Objects.equals(mac, other.mac)
+				&& Objects.equals(manufacturer, other.manufacturer) && Objects.equals(solution, other.solution)
+				&& status == other.status;
 	}
 
 }
